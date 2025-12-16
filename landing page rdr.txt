@@ -1,0 +1,155 @@
+import React, { useState } from 'react';
+
+const LandingPage = () => {
+  const [currentCharacter, setCurrentCharacter] = useState(0);
+  const characters = [
+    { name: 'Cyber Runner', image: 'https://via.placeholder.com/400x600/8B5CF6/FFFFFF?text=Cyber+Runner' },
+    { name: 'Neon Hacker', image: 'https://via.placeholder.com/400x600/8B5CF6/FFFFFF?text=Neon+Hacker' },
+    { name: 'Shadow Enforcer', image: 'https://via.placeholder.com/400x600/8B5CF6/FFFFFF?text=Shadow+Enforcer' },
+  ];
+
+  const nextCharacter = () => {
+    setCurrentCharacter((prev) => (prev + 1) % characters.length);
+  };
+
+  const prevCharacter = () => {
+    setCurrentCharacter((prev) => (prev - 1 + characters.length) % characters.length);
+  };
+
+  return (
+    <div className="min-h-screen bg-black text-white font-sans">
+      {/* Hero Section */}
+      <section className="relative h-screen flex items-center justify-center bg-gradient-to-b from-black to-gray-900">
+        <div className="absolute inset-0 bg-black opacity-50"></div>
+        <div className="relative z-10 text-center px-4">
+          <h1 className="text-5xl md:text-7xl font-bold mb-8 text-purple-400 drop-shadow-lg">
+            Cyberpunk Open-World
+          </h1>
+          <p className="text-xl md:text-2xl mb-8 text-gray-300">
+            Dive into a neon-drenched dystopia where every choice shapes the future.
+          </p>
+          <div className="mb-8">
+            {/* Placeholder for cinematic video */}
+            <div className="w-full max-w-4xl mx-auto h-64 md:h-96 bg-gray-800 rounded-lg flex items-center justify-center border-2 border-purple-500">
+              <span className="text-purple-400 text-lg">Cinematic Trailer Placeholder</span>
+            </div>
+          </div>
+          <button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-lg text-lg transition duration-300 shadow-lg hover:shadow-purple-500/50">
+            Pre-Order Now
+          </button>
+        </div>
+      </section>
+
+      {/* Feature Grid */}
+      <section className="py-16 px-4 bg-gray-900">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-12 text-purple-400">Game Features</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-gray-800 p-6 rounded-lg text-center hover:scale-105 hover:shadow-lg hover:shadow-purple-500/50 transition duration-300 border border-purple-500">
+              <h3 className="text-2xl font-semibold mb-4 text-purple-400">Stunning Graphics</h3>
+              <p className="text-gray-300">Immerse yourself in ultra-realistic visuals powered by cutting-edge tech.</p>
+            </div>
+            <div className="bg-gray-800 p-6 rounded-lg text-center hover:scale-105 hover:shadow-lg hover:shadow-purple-500/50 transition duration-300 border border-purple-500">
+              <h3 className="text-2xl font-semibold mb-4 text-purple-400">Multiplayer</h3>
+              <p className="text-gray-300">Team up or compete in intense online battles across the city.</p>
+            </div>
+            <div className="bg-gray-800 p-6 rounded-lg text-center hover:scale-105 hover:shadow-lg hover:shadow-purple-500/50 transition duration-300 border border-purple-500">
+              <h3 className="text-2xl font-semibold mb-4 text-purple-400">Epic Story</h3>
+              <p className="text-gray-300">Unravel a gripping narrative filled with twists and high-stakes decisions.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Character Carousel */}
+      <section className="py-16 px-4 bg-black">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-4xl font-bold mb-12 text-purple-400">Meet the Characters</h2>
+          <div className="relative">
+            <div className="flex justify-center items-center">
+              <button onClick={prevCharacter} className="absolute left-0 z-10 bg-purple-600 hover:bg-purple-700 text-white p-2 rounded-full transition duration-300">
+                ‹
+              </button>
+              <div className="w-80 h-96 bg-gray-800 rounded-lg overflow-hidden border-2 border-purple-500">
+                <img src={characters[currentCharacter].image} alt={characters[currentCharacter].name} className="w-full h-full object-cover" />
+                <div className="p-4">
+                  <h3 className="text-xl font-semibold text-purple-400">{characters[currentCharacter].name}</h3>
+                </div>
+              </div>
+              <button onClick={nextCharacter} className="absolute right-0 z-10 bg-purple-600 hover:bg-purple-700 text-white p-2 rounded-full transition duration-300">
+                ›
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* System Requirements */}
+      <section className="py-16 px-4 bg-gray-900">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-12 text-purple-400">System Requirements</h2>
+          <div className="overflow-x-auto">
+            <table className="w-full text-left border-collapse border border-purple-500">
+              <thead>
+                <tr className="bg-purple-600">
+                  <th className="border border-purple-500 p-4">Component</th>
+                  <th className="border border-purple-500 p-4">Minimum</th>
+                  <th className="border border-purple-500 p-4">Recommended</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className="border border-purple-500 p-4">OS</td>
+                  <td className="border border-purple-500 p-4">Windows 10</td>
+                  <td className="border border-purple-500 p-4">Windows 11</td>
+                </tr>
+                <tr>
+                  <td className="border border-purple-500 p-4">Processor</td>
+                  <td className="border border-purple-500 p-4">Intel Core i5-6600K</td>
+                  <td className="border border-purple-500 p-4">Intel Core i7-8700K</td>
+                </tr>
+                <tr>
+                  <td className="border border-purple-500 p-4">Memory</td>
+                  <td className="border border-purple-500 p-4">8 GB RAM</td>
+                  <td className="border border-purple-500 p-4">16 GB RAM</td>
+                </tr>
+                <tr>
+                  <td className="border border-purple-500 p-4">Graphics</td>
+                  <td className="border border-purple-500 p-4">NVIDIA GTX 1060</td>
+                  <td className="border border-purple-500 p-4">NVIDIA RTX 3070</td>
+                </tr>
+                <tr>
+                  <td className="border border-purple-500 p-4">Storage</td>
+                  <td className="border border-purple-500 p-4">50 GB available space</td>
+                  <td className="border border-purple-500 p-4">50 GB SSD</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-8 px-4 bg-black border-t border-purple-500">
+        <div className="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center">
+          <div className="flex space-x-4 mb-4 md:mb-0">
+            <a href="#" className="text-purple-400 hover:text-purple-300 transition duration-300">
+              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+            </a>
+            <a href="#" className="text-purple-400 hover:text-purple-300 transition duration-300">
+              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.746-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.987C24.007 5.367 18.641.001 12.017.001z"/></svg>
+            </a>
+            <a href="#" className="text-purple-400 hover:text-purple-300 transition duration-300">
+              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.746-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.987C24.007 5.367 18.641.001 12.017.001z"/></svg>
+            </a>
+          </div>
+          <button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-6 rounded-lg transition duration-300">
+            Join Discord
+          </button>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default LandingPage;
